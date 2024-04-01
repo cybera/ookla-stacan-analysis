@@ -9,6 +9,10 @@ Doc / guide: https://huggingface.co/docs/hub/model-cards
 
 <!-- Provide a quick summary of the project, it's purpose. -->
 
+The repository here contains the code necessary to setup an environment and download the data to investigate internet speed data across Canada. Though the code has been written by Cybera data scientists, the data itself comes from [Ookla](https://www.ookla.com/), who make internet speed test data available for anyone interested in investigating.
+
+Once the data is downloaded, it is aggregated and mapped to make it more useful, usually for Cybera's ADSL project interns to get familiarized with the process. To that end, the Project Card here largely reflects the information available on the Ookla website, and references specific sections where nrecessary.
+
 Dataset card required? [yes]
 <!-- If not including dataset card, include justification here and remove dataset card section -->
 
@@ -59,53 +63,96 @@ There are significant and valid questions about how the data is collected, and t
 
 <!-- This section provides a description of the dataset fields, and additional information about the dataset structure such as criteria used to create the splits, relationships between data points, etc. -->
 
+The Ookla dataset is organized into folders representing quarters (Q1-Q4) from 2019 through latest full quarter (Q4 2023 as of writing), each folder containing a single zip file with four files inside.
+
+Four different raw filetypes are present within the zip (.dbf, .prj, .shp, .shx), all geo datatypes that can be reconstructed to form maps with the below fields:
+- `quadkey`: Identifier for the tile used to map the data, and where the remaining fields pertain to
+- `avg_d_kbps`: Average download speed in kbps
+- `avg_u_kbps`: Average upload speed in kbps
+- `avg_lat_ms`: Average latency in ms
+- `tests`: Number of tests conducted per tile
+- `devices`: Number of unique devices on which tests were conducted
+
+More information on attributes [here](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#tile-attributes) or file formats [here](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#data-formats)
+
 ## Dataset Creation
 
 <!-- Much of the information here can be copied (with attribution and URLs) from the source repository -->
+
+Information availale from [Ookla Github](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#about)
 
 ### Curation Rationale
 
 <!-- Motivation for the creation of this dataset. -->
 
+Rationalte from [Ookla for Good](https://www.ookla.com/ookla-for-good)
+
 ### Source Data
 
 <!-- This section describes the source data (e.g. news text and headlines, social media posts, translated sentences, ...). -->
+
+Data was collected from devices conducting speed tests at https://www.speedtest.net/
 
 #### Data Collection and Processing
 
 <!-- This section describes the data collection and processing process such as data selection criteria, filtering and normalization methods, tools and libraries used, etc. -->
 
+Data is collected and aggregated monthly, as per Ookla's notes [here]. Data will routinely be updated to remain in compliance with privacy legislation from different areas of the world, such as GDPR, so fidelity cannot be guaranteed if accessing at different times.
+
 #### Who are the source data producers?
 
 <!-- This section describes the people or systems who originally created the data. It should also include self-reported demographic or identity information for the source data creators if this information is available. -->
+
+The data is collected from any user who utilizes Ookla's speed test website (as mentioned above in [Source Data](#source-data))
 
 ### Annotations [optional]
 
 <!-- If the dataset contains annotations which are not part of the initial data collection, use this section to describe them. If no annotations, this section can be removed. -->
 
+N/A
+
 #### Annotation process
 
 <!-- This section describes the annotation process such as annotation tools used in the process, the amount of data annotated, annotation guidelines provided to the annotators, interannotator statistics, annotation validation, etc. -->
+
+N/A
 
 #### Who are the annotators?
 
 <!-- This section describes the people or systems who created the annotations. Names or organizations are both acceptable -->
 
+N/A
+
 #### Personal and Sensitive Information
 
 <!-- State whether the dataset contains data that might be considered personal, sensitive, or private (e.g., data that reveals addresses, uniquely identifiable names or aliases, racial or ethnic origins, sexual orientations, religious beliefs, political opinions, financial or health data, etc.). If efforts were made to anonymize the data, describe the anonymization process. -->
+
+Though the information here is collected from individuals who visit the speed test website, the fields contained in this dataset pertain to internet speeds and geographic data only, which cannot on their own be attached to any single individual.
+
+As the data is aggregated in tiles, which are as large as 610x610m at the equator (as per [Github](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#tiles)), no personally identifiable geographic information is present either.
 
 ## Bias, Risks, and Limitations
 
 <!-- This section is meant to convey both technical and sociotechnical limitations, as well as any concerns about how the data might be biased and any efforts taken to mitigate it. -->
 
+Though there are no biases and risks as they pertain to the people on which this data is collected, there are arguments to be made that the method of collection may introduce a sampling bias. For example, it's rare for people who are not experiencing performance issues with their internet service to seek speed tests, nor should it be expected that a certain level of internet speed is guaranteed anywhere. Any analysis of these issues should be aware of the limitations of generalizing findings.
+
 ### Recommendations
 
 <!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations beyond those actions taken by the creators of the dataset (if external). -->
 
+Any statistical analysis should be aware of sampling bias, the disparity of speeds even within the same tile, and these concerns should be clearly stated alongside reported findings.
+
 ## Citation [optional]
 
 <!-- If there is a paper or blog post introducing the dataset, the APA and Bibtex information for that should go in this section. -->
+
+See [citation card](CITATION.cff) or widget for Cybera citation.
+
+Ookla citation:
+'''
+Speedtest® by Ookla® Global Fixed and Mobile Network Performance Maps was accessed on 1 April, 2024 from AWS. Based on Cybera, Inc's analysis of Speedtest® by Ookla® Global Fixed and Mobile Network Performance Maps for Q1 2019 to Q4 2023. Ookla trademarks used under license and reprinted with permission.
+'''
 
 **BibTeX:**
 
@@ -128,6 +175,10 @@ There are significant and valid questions about how the data is collected, and t
 
 <!-- Author of the dataset card (from Cybera) and/or author(s) if much of the information was copied from pre-existing cards -->
 
+Jordan Swanson (Cybera, Inc)
+
 ## Project Card Contact
 
 <!-- Unless otherwise specificed, this could simply be datascience@cybera.ca -->
+
+datascience@cybera.ca

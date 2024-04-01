@@ -1,0 +1,21 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Ookla Open Data and Statistics Canada Internet Analysis
+message: >-
+  Code and documentation from Cybera; dataset provided by
+  Ookla
+type: software
+authors:
+  - name: 'Cybera, Inc'
+    address: 3512 33 Street NW
+    city: Calgary
+    country: CA
+    post-code: T2L 2A6
+    location: Suite 200
+    email: datascience@cybera.ca
+    website: 'https://www.cybera.ca/'
+repository-code: 'https://github.com/cybera/ookla-statcan-analysis'
+license: CC-BY-NC-SA-4.0
+date-released: '2024-04-01'
