@@ -5,15 +5,17 @@ For reference on model card metadata, see the spec: https://github.com/huggingfa
 Doc / guide: https://huggingface.co/docs/hub/model-cards 
 -->
 
-# Project Card for [project name]
+# Project Card for Ookla / StatCan Analysis
 
 <!-- Provide a quick summary of the project, it's purpose. -->
 
-Dataset card required? [yes|no]
+Dataset card required? [yes]
 <!-- If not including dataset card, include justification here and remove dataset card section -->
 
-Model card required? [yes|no]
+Model card required? [no]
 <!-- If not including model card, include justification here and remove model card section -->
+
+This repository holds only the data to do comparisons between the Ookla dataset (provided) and the [Statistics Canada National Broadband Internet Service Availability Map](https://ised-isde.canada.ca/app/scr/sittibc/web/bbmap?lang=eng#!/map). Other than wrangling the data and combining it in different ways, no machine learning model (and certainly no _advanced_ model) is used.
 
 <!-- Begin dataset card section -->
 
@@ -23,19 +25,19 @@ Model card required? [yes|no]
 
 <!-- Provide a longer summary of what this dataset is and where it originated. -->
 
-- **Curated by:**
-- **Funded by [optional]:** 
-- **Shared by [optional]:**
-- **Language(s) (NLP):**
-- **License:**
+- **Curated by:** [Cybera, Inc](https://www.cybera.ca/)
+- **Funded by [optional]:** [Ookla](https://www.ookla.com/ookla-for-good/open-data)
+- **Shared by [optional]:** [Cybera Data Science team](https://www.cybera.ca/data-science/)
+- **Language(s) (NLP):** English (w/ French province and territory names)
+- **License:** CC BY-NC-SA 4.0
 
 ### Dataset Sources
 
 <!-- Provide the basic links for the dataset. -->
 
-- **Repository:**
-- **Paper [optional]:**
-- **Demo [optional]:**
+- **Repository:** https://registry.opendata.aws/speedtest-global-performance/
+- **Paper [optional]:** N/A
+- **Demo [optional]:** [Tutorials available on Github](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#tutorials)
 
 ## Uses
 
@@ -45,9 +47,13 @@ Model card required? [yes|no]
 
 <!-- This section describes suitable use cases for the dataset. -->
 
+Ookla makes this dataset available to the public in the service of open data, focusing on fixed broadband and mobile network connectivity and performance. For Cybera's use case, of special interest is the use of this dataset in relation to the [Canadian Radio-television and Telecommunications Commission's](https://crtc.gc.ca/eng/internet/internet.htm) goal of 50/10 Mbps connectivity across Canada.
+
 ### Out-of-Scope Use
 
 <!-- This section addresses misuse, malicious use, and uses that the dataset will not work well for. This is also the place to note and address any controversy surrounding the dataset that may have been in the enws. -->
+
+There are significant and valid questions about how the data is collected, and the need for careful statistical analysis. Any conclusions drawn should make readers aware of the underlying method of sampling and how to communicate findings.
 
 ## Dataset Structure
 
@@ -117,141 +123,6 @@ Model card required? [yes|no]
 <!-- Use this section to capture any information that you deem relevant that hasn't been included elsewhere, such as concerns with the dataset (or similar datasets) and efforts taken to ensure due diligence has been done on our end -->
 
 <!-- This ends the dataset section -->
-
-<!-- This starts the model card section -->
-
-# Model Card
-<!-- For reference on model card metadata, see the spec: https://github.com/huggingface/hub-docs/blob/main/modelcard.md?plain=1
-
-Doc / guide: https://huggingface.co/docs/hub/model-cards -->
-
-
-## Model Details
-
-<!-- Provide a quick summary of what the model is/does. -->
-
-### Model Description
-
-<!-- Provide a longer summary of what this model is. On most occasions, the model will have been developed elsewhere and this information can be copied (with attribution and URL where necessary) from the original source 
-
-If using a model card alongside a dataset card, many of the redundant fields in this section can refer back to the relevant sections in the dataset card -->
-
-
-- **Developed by:**
-- **Funded by [optional]:**
-- **Shared by [optional]:**
-- **Model type:**
-- **Language(s) (NLP):**
-- **License:**
-- **Finetuned from model [optional]:**
-
-### Model Sources [optional]
-
-<!-- Provide the basic links for the model. -->
-
-- **Repository:**
-- **Paper [optional]:**
-- **Demo [optional]:**
-
-## Uses
-
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-
-### Direct Use
-
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
-
-### Downstream Use [optional]
-
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
-
-### Out-of-Scope Use
-
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
-
-## Bias, Risks, and Limitations
-
-<!-- This section is meant to convey both technical and sociotechnical limitations. For concerns about the data used to generate the model, refer back to the datacard section -->
-
-### Recommendations
-
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
-
-## How to Get Started with the Model
-
-<!-- Many pre-existing models will have a 'Quickstart' or 'Get Started' guide that will contain code to download the model and run a quick demo. That can be copied into a code cell here -->
-
-Use the code below to get started with the model.
-
-## Training Details
-
-<!-- If most or all of the information in this section is already described either elsewhere in this document or on the website of the original repository, sections can be quoted from it and linked to  -->
-
-### Training Data
-
-<!-- For entries in this section that have already been addressed by the corresponding fields in the dataset card, they can be referred to in text, with optional comment -->
-
-### Training Procedure
-
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
-
-#### Preprocessing [optional]
-
-<!-- If the data was modified between its appearance in the original dataset and the model, note those changes here -->
-
-#### Training Hyperparameters
-
-- **Training regime:** <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
-
-<!-- If the model is available in different sizes, note which one was used here -->
-
-#### Speeds, Sizes, Times [optional]
-
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
-
-## Evaluation
-
-<!-- This section describes the evaluation protocols and provides the results. -->
-
-#### Summary
-
-<!-- Summarize the model and its use -->
-
-## Model Examination [optional]
-
-<!-- Relevant interpretability work for the model goes here -->
-
-## Environmental Impact
-
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly
-
-<!-- Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700 -->
-
-- **Hardware Type:**
-- **Hours used:**
-- **Cloud Provider:**
-- **Compute Region:**
-- **Carbon Emitted:**
-
-## Technical Specifications [optional]
-
-<!-- Use this section to describe the model (to the best of the available knowledge) -->
-
-### Model Architecture and Objective
-
-## Citation [optional]
-
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
-
-**BibTeX:**
-
-**APA:**
-
-## More Information [optional]
-
-<!-- Any additional information not covered in the previous sections -->
-
-<!-- This ends the model card section -->
 
 ## Project Card Authors
 
