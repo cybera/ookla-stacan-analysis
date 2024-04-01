@@ -150,19 +150,32 @@ Any statistical analysis should be aware of sampling bias, the disparity of spee
 See [citation card](CITATION.cff) or widget for Cybera citation.
 
 Ookla citation:
-'''
+```
 Speedtest® by Ookla® Global Fixed and Mobile Network Performance Maps was accessed on 1 April, 2024 from AWS. Based on Cybera, Inc's analysis of Speedtest® by Ookla® Global Fixed and Mobile Network Performance Maps for Q1 2019 to Q4 2023. Ookla trademarks used under license and reprinted with permission.
-'''
+```
 
 **BibTeX:**
 
+```
+@software{Cybera_Ookla_Open_Data_2024,
+author = {{Cybera, Inc}},
+license = {CC-BY-NC-SA-4.0},
+month = apr,
+title = {{Ookla Open Data and Statistics Canada Internet Analysis}},
+url = {https://github.com/cybera/ookla-statcan-analysis},
+year = {2024}
+}
+```
 
 **APA:**
 
+Cybera, Inc. (2024). Ookla Open Data and Statistics Canada Internet Analysis [Computer software]. https://github.com/cybera/ookla-statcan-analysis
 
 ## Glossary [optional]
 
 <!-- If relevant, include terms and calculations in this section that can help readers understand the dataset or dataset card. -->
+
+N/A
 
 
 ## More Information [optional]
@@ -170,6 +183,8 @@ Speedtest® by Ookla® Global Fixed and Mobile Network Performance Maps was acce
 <!-- Use this section to capture any information that you deem relevant that hasn't been included elsewhere, such as concerns with the dataset (or similar datasets) and efforts taken to ensure due diligence has been done on our end -->
 
 <!-- This ends the dataset section -->
+
+N/A
 
 ## Project Card Authors
 
