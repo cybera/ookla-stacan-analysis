@@ -88,37 +88,43 @@ Four different raw filetypes are present within the zip (.dbf, .prj, .shp, .shx)
 More information on attributes [here](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#tile-attributes) or file formats [here](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#data-formats)
 
 #### StatsCan
-Similar to Ookla, StatsCan data contains the same four filetypes needed to reconstruct maps, but with census information instead of internet performance. Also included in the StatsCan data is a technical PDF with more details on the datatypes and more in-depth [data dictionary](https://www12.statcan.gc.ca/census-recensement/2016/ref/dict/index-eng.cfm) is provided online to search any terms necessary.
+Similar to Ookla, StatsCan data contains the same four filetypes needed to reconstruct maps, but with census information instead of internet performance. Also included in the StatsCan zip file data is a technical PDF with more details on the features, and a more in-depth [data dictionary](https://www12.statcan.gc.ca/census-recensement/2016/ref/dict/index-eng.cfm) is provided online to search any terms necessary.
 
 ## Dataset Creation
 
 <!-- Much of the information here can be copied (with attribution and URLs) from the source repository -->
 
-Information availale from [Ookla Github](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#about)
+Information availale from [Ookla Github](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#about), or [StatsCan](https://www12.statcan.gc.ca/census-recensement/2016/ref/index-eng.cfm) regarding census data
 
 ### Curation Rationale
 
 <!-- Motivation for the creation of this dataset. -->
 
-Rationalte from [Ookla for Good](https://www.ookla.com/ookla-for-good)
+Rationale from [Ookla for Good](https://www.ookla.com/ookla-for-good).
+
+[Census data](https://en.wikipedia.org/wiki/Census_in_Canada) is collected by the Canadian government via StatsCan every five years, and results are slowly released up to two years following the year of collection. Demographic and population statistics are only some of vast amounts of data collected from the census.
 
 ### Source Data
 
 <!-- This section describes the source data (e.g. news text and headlines, social media posts, translated sentences, ...). -->
 
-Data was collected from devices conducting speed tests at https://www.speedtest.net/
+Ookla ata was collected from devices conducting speed tests at https://www.speedtest.net/.
+
+StatsCan data is derived from survey responses from Canadians (or their families) from past years.
 
 #### Data Collection and Processing
 
 <!-- This section describes the data collection and processing process such as data selection criteria, filtering and normalization methods, tools and libraries used, etc. -->
 
-Data is collected and aggregated monthly, as per Ookla's notes [here]. Data will routinely be updated to remain in compliance with privacy legislation from different areas of the world, such as GDPR, so fidelity cannot be guaranteed if accessing at different times.
+Ookla data is collected and aggregated monthly, as per Ookla's notes [here](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#update-cadence). Data will routinely be updated to remain in compliance with privacy legislation from different areas of the world, such as GDPR, so fidelity cannot be guaranteed if accessing at different times.
+
+StatsCan data is collected every five years, and released two years following (i.e. data from the 2016 census is released as late as 2018). The data is anonymized and aggregated so as to remove any personal identifiable information (PII).
 
 #### Who are the source data producers?
 
 <!-- This section describes the people or systems who originally created the data. It should also include self-reported demographic or identity information for the source data creators if this information is available. -->
 
-The data is collected from any user who utilizes Ookla's speed test website (as mentioned above in [Source Data](#source-data))
+The data is collected from any user who utilizes Ookla's speed test website (as mentioned above in [Source Data](#source-data)); census data is collected by StatsCan
 
 ### Annotations [optional]
 
@@ -142,15 +148,17 @@ N/A
 
 <!-- State whether the dataset contains data that might be considered personal, sensitive, or private (e.g., data that reveals addresses, uniquely identifiable names or aliases, racial or ethnic origins, sexual orientations, religious beliefs, political opinions, financial or health data, etc.). If efforts were made to anonymize the data, describe the anonymization process. -->
 
-Though the information here is collected from individuals who visit the speed test website, the fields contained in this dataset pertain to internet speeds and geographic data only, which cannot on their own be attached to any single individual.
+Though the Ookla information here is collected from individuals who visit the speed test website, the fields contained in this dataset pertain to internet speeds and geographic data only, which cannot on their own be attached to any single individual. As the data is aggregated in tiles, which are as large as 610x610m at the equator (as per [Github](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#tiles)), no personally identifiable geographic information is present either.
 
-As the data is aggregated in tiles, which are as large as 610x610m at the equator (as per [Github](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#tiles)), no personally identifiable geographic information is present either.
+The subset of census data used from StatsCan contains well-established geographic boundaries and count data of those regions. No PII is present.
 
 ## Bias, Risks, and Limitations
 
 <!-- This section is meant to convey both technical and sociotechnical limitations, as well as any concerns about how the data might be biased and any efforts taken to mitigate it. -->
 
 Though there are no biases and risks as they pertain to the people on which this data is collected, there are arguments to be made that the method of collection may introduce a sampling bias. For example, it's rare for people who are not experiencing performance issues with their internet service to seek speed tests, nor should it be expected that a certain level of internet speed is guaranteed anywhere. Any analysis of these issues should be aware of the limitations of generalizing findings.
+
+Census data has a much higher confidence in how its collected, as it's arguably the most important data that StatsCan collects. More information on the Canada census can be found on the StatsCan page [here](https://www.statcan.gc.ca/en/census/census-engagement/about).
 
 ### Recommendations
 
@@ -167,6 +175,9 @@ See [citation card](CITATION.cff) or widget for Cybera citation.
 Ookla citation:
 ```
 Speedtest® by Ookla® Global Fixed and Mobile Network Performance Maps was accessed on 1 April, 2024 from AWS. Based on Cybera, Inc's analysis of Speedtest® by Ookla® Global Fixed and Mobile Network Performance Maps for Q1 2019 to Q4 2023. Ookla trademarks used under license and reprinted with permission.
+
+StatsCan:
+Statistics Canada. (2019). 2016 Census - Boundary files. https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2016-eng.cfm
 ```
 
 **BibTeX:**
