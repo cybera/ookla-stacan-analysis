@@ -222,4 +222,6 @@ Jordan Swanson (Cybera, Inc)
 
 <!-- Unless otherwise specificed, this could simply be datascience@cybera.ca -->
 
-datascience@cybera.ca
+For more information on project cards and other efforts to improve transparency and responsibility surrounding artificial intelligence and data, check out our [Wiki page](https://wiki.cybera.ca/display/DS/Artificial+Intelligence+and+Data+Resources)
+
+Contact Cybera at datascience@cybera.ca
