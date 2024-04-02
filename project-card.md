@@ -9,9 +9,11 @@ Doc / guide: https://huggingface.co/docs/hub/model-cards
 
 <!-- Provide a quick summary of the project, it's purpose. -->
 
-The repository here contains the code necessary to setup an environment and download the data to investigate internet speed data across Canada. Though the code has been written by Cybera data scientists, the data itself comes from [Ookla](https://www.ookla.com/), who make internet speed test data available for anyone interested in investigating.
+The repository here contains the code necessary to setup an environment and download the data to investigate internet speed data across Canada. Though the code has been written by Cybera data scientists, the data itself comes from [Ookla](https://www.ookla.com/), who make internet speed test data available for anyone interested in investigating, as well as [Statistics Canada (StatsCan)](https://www.statcan.gc.ca/en/start), who maintain datasets on numerous topics related to Canada. The Ookla dataset provides information about internet speed and access, where the StatsCan data provides context in the form of data about populations, drawn from census data (2016).
 
-Once the data is downloaded, it is aggregated and mapped to make it more useful, usually for Cybera's ADSL project interns to get familiarized with the process. To that end, the Project Card here largely reflects the information available on the Ookla website, and references specific sections where nrecessary.
+##### Note: it is not uncommon for links to StatsCan pages to rot over time. Curators of this repository endeavour to keep this information current, but no guarantees can be given.
+
+Once the datasets are downloaded they are aggregated and visualized to make analysis more meaningful. Though the data is necessarily transformed as part of this process, references in this document refer to the raw data and may not be able to be perfectly extrapolated to the combined data. To that end, the Project Card here largely reflects the information available on the Ookla and StatsCan websites, and references specific sections where nrecessary.
 
 Dataset card required? [yes]
 <!-- If not including dataset card, include justification here and remove dataset card section -->
@@ -19,7 +21,7 @@ Dataset card required? [yes]
 Model card required? [no]
 <!-- If not including model card, include justification here and remove model card section -->
 
-This repository holds only the data to do comparisons between the Ookla dataset (provided) and the [Statistics Canada National Broadband Internet Service Availability Map](https://ised-isde.canada.ca/app/scr/sittibc/web/bbmap?lang=eng#!/map). Other than wrangling the data and combining it in different ways, no machine learning model (and certainly no _advanced_ model) is used.
+This repository holds only the data to do aggregations between the Ookla dataset and the StatsCan census data, similar to the [Statistics Canada National Broadband Internet Service Availability Map](https://ised-isde.canada.ca/app/scr/sittibc/web/bbmap?lang=eng#!/map). Other than wrangling the data and combining it in different ways, no machine learning model (and certainly no _advanced_ model) is used.
 
 <!-- Begin dataset card section -->
 
@@ -30,7 +32,7 @@ This repository holds only the data to do comparisons between the Ookla dataset 
 <!-- Provide a longer summary of what this dataset is and where it originated. -->
 
 - **Curated by:** [Cybera, Inc](https://www.cybera.ca/)
-- **Funded by [optional]:** [Ookla](https://www.ookla.com/ookla-for-good/open-data)
+- **Funded by [optional]:** [Ookla](https://www.ookla.com/ookla-for-good/open-data); [StatsCanada](https://www.statcan.gc.ca/en/about/statcan?MM=1)
 - **Shared by [optional]:** [Cybera Data Science team](https://www.cybera.ca/data-science/)
 - **Language(s) (NLP):** English (w/ French province and territory names)
 - **License:** CC BY-NC-SA 4.0
@@ -39,9 +41,15 @@ This repository holds only the data to do comparisons between the Ookla dataset 
 
 <!-- Provide the basic links for the dataset. -->
 
+#### Ookla
 - **Repository:** https://registry.opendata.aws/speedtest-global-performance/
 - **Paper [optional]:** N/A
 - **Demo [optional]:** [Tutorials available on Github](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#tutorials)
+
+#### StatsCan
+- **Repository:** https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2016-eng.cfm
+- **Paper [optional]:** N/A
+- **Demo [optional]:** N/A
 
 ## Uses
 
@@ -53,6 +61,8 @@ This repository holds only the data to do comparisons between the Ookla dataset 
 
 Ookla makes this dataset available to the public in the service of open data, focusing on fixed broadband and mobile network connectivity and performance. For Cybera's use case, of special interest is the use of this dataset in relation to the [Canadian Radio-television and Telecommunications Commission's](https://crtc.gc.ca/eng/internet/internet.htm) goal of 50/10 Mbps connectivity across Canada.
 
+StatsCan makes significant amounts of data available through their website, with no suggestion of how the data is to be used, other than suggestions on limitations. For our purposes, the goal is to compare against Ookla data by adding information about demographics and regions.
+
 ### Out-of-Scope Use
 
 <!-- This section addresses misuse, malicious use, and uses that the dataset will not work well for. This is also the place to note and address any controversy surrounding the dataset that may have been in the enws. -->
@@ -63,9 +73,11 @@ There are significant and valid questions about how the data is collected, and t
 
 <!-- This section provides a description of the dataset fields, and additional information about the dataset structure such as criteria used to create the splits, relationships between data points, etc. -->
 
+
+#### Ookla
 The Ookla dataset is organized into folders representing quarters (Q1-Q4) from 2019 through latest full quarter (Q4 2023 as of writing), each folder containing a single zip file with four files inside.
 
-Four different raw filetypes are present within the zip (.dbf, .prj, .shp, .shx), all geo datatypes that can be reconstructed to form maps with the below fields:
+Four different raw filetypes are present within the zip (.dbf, .prj, .shp, .shx), all geo datatypes that can be reconstructed to form maps with the below fields (and more in newer updates of the dataset):
 - `quadkey`: Identifier for the tile used to map the data, and where the remaining fields pertain to
 - `avg_d_kbps`: Average download speed in kbps
 - `avg_u_kbps`: Average upload speed in kbps
@@ -74,6 +86,9 @@ Four different raw filetypes are present within the zip (.dbf, .prj, .shp, .shx)
 - `devices`: Number of unique devices on which tests were conducted
 
 More information on attributes [here](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#tile-attributes) or file formats [here](https://github.com/teamookla/ookla-open-data?tab=readme-ov-file#data-formats)
+
+#### StatsCan
+Similar to Ookla, StatsCan data contains the same four filetypes needed to reconstruct maps, but with census information instead of internet performance. Also included in the StatsCan data is a technical PDF with more details on the datatypes and more in-depth [data dictionary](https://www12.statcan.gc.ca/census-recensement/2016/ref/dict/index-eng.cfm) is provided online to search any terms necessary.
 
 ## Dataset Creation
 
