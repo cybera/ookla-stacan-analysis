@@ -13,7 +13,7 @@ The repository here contains the code necessary to setup an environment and down
 
 ##### Note: it is not uncommon for links to StatsCan pages to rot over time. Curators of this repository endeavour to keep this information current, but no guarantees can be given.
 
-Once the datasets are downloaded they are aggregated and visualized to make analysis more meaningful. Though the data is necessarily transformed as part of this process, references in this document refer to the raw data and may not be able to be perfectly extrapolated to the combined data. To that end, the Project Card here largely reflects the information available on the Ookla and StatsCan websites, and references specific sections where nrecessary.
+Once the datasets are downloaded, they are aggregated and visualized to make analysis more meaningful. Though the data is necessarily transformed as part of this process, references in this document refer to the raw data and may not be able to be perfectly extrapolated to the combined data. To that end, the Project Card here largely reflects the information available on the Ookla and StatsCan websites, and references specific sections where necessary.
 
 Dataset card required? [yes]
 <!-- If not including dataset card, include justification here and remove dataset card section -->
@@ -61,7 +61,7 @@ This repository holds only the data to do aggregations between the Ookla dataset
 
 Ookla makes this dataset available to the public in the service of open data, focusing on fixed broadband and mobile network connectivity and performance. For Cybera's use case, of special interest is the use of this dataset in relation to the [Canadian Radio-television and Telecommunications Commission's](https://crtc.gc.ca/eng/internet/internet.htm) goal of 50/10 Mbps connectivity across Canada.
 
-StatsCan makes significant amounts of data available through their website, with no suggestion of how the data is to be used, other than suggestions on limitations. For our purposes, the goal is to compare against Ookla data by adding information about demographics and regions.
+StatsCan makes significant amounts of data available through their website, with no suggestion of how the data is to be used, other than notes on limitations. For our purposes, the goal is to combine with Ookla data by adding information about demographics and regions.
 
 ### Out-of-Scope Use
 
